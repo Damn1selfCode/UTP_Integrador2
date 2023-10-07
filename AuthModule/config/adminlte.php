@@ -63,12 +63,6 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +80,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => '',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -302,19 +296,19 @@ return [
         ],
 
         // Sidebar items:
-     
-       
+
+
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'usuarios',
-            'url'  => 'admin/settings',
+            'url'  => '',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        
+
         [
             'text'    => 'Academia',
             'icon'    => 'fas fa-fw fa-share',
@@ -323,7 +317,7 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ],
-        
+
             ],
         ],
         [
@@ -334,7 +328,7 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ],
-        
+
             ],
         ],
         [
@@ -345,7 +339,7 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ],
-        
+
             ],
         ],
         [

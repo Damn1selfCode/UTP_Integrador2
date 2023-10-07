@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes; // Importa SoftDeletes
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes; // Agrega SoftDeletes
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'profile_image'
     ];
 
     /**
@@ -42,4 +44,33 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Define la propiedad $dates para la eliminación suave
+    protected $dates = ['deleted_at'];
+
+    //----------------------------cada vez que se estabelzca se cifre
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+    public function getProfileImageAttribute()
+    {
+        return $this->image
+            ? "images/{$this->image->path}"
+            : 'https://www.gravatar.com/avatar/404?d=mp';
+    }
+    //sucripciones
+    public function susbcription()
+    {
+        return $this->hasOne(Subscrition::Class);
+    }
+    public function hasActiveSusbcription()
+    {
+        //return true;
+        return optional($this->susbcription)->isActive() ?? false;
+    }
 }

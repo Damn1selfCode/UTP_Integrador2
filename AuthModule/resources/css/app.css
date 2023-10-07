@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+main {
+    background-color: #111827; /* Cambia el color al que desees */
+}
