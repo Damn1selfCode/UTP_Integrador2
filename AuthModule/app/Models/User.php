@@ -64,13 +64,18 @@ class User extends Authenticatable implements MustVerifyEmail
             : 'https://www.gravatar.com/avatar/404?d=mp';
     }
     //sucripciones
-    public function susbcription()
+    public function suscripcion()
     {
-        return $this->hasOne(Subscrition::Class);
+        return $this->hasOne(Subscription::class, 'user_id', 'id');
     }
-    public function hasActiveSusbcription()
+    //usuario predeterminado suscripcion 
+    public function suscrip()
     {
-        //return true;
-        return optional($this->susbcription)->isActive() ?? false;
+        return $this->hasOne(Subscription::class);
     }
+    /*
+    public function suscripcion()
+    {
+        return $this->hasOne(Suscripcion::class);
+    }*/
 }

@@ -3,15 +3,14 @@
 @section('title', 'Dashboard')
 @section('content')
 
-<div class="content-wrapper" style="min-height: 1058.31px;">
+<div class="content-wrapper" style="max-width: 100%; margin: 0 auto;">
 
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" >
 
-        <div class="container-fluid">
+        <div class="container-fluid"  >
             @include('home.vistasrecuadros')
-
             @include('home.vistas')
 
         </div>
@@ -24,14 +23,13 @@
 
 
 @section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
-<!-- estilo personalizado <link rel="stylesheet" href="{{ asset('css/style.css') }}">-->
+<link rel="stylesheet" href="{{ asset('academy_css/style.css') }}">
 
 @stop
 
 @section('js')
 <script>
-    console.log('Hola!');
+  
 </script>
 @stop
 @section('scripts')

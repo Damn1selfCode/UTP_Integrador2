@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_platforms', function (Blueprint $table) {
+        Schema::create('payment_platform', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
+            $table->string('name',50);
             $table->string('image');
-            $table->boolean('subscription_enabled')->default(false); //aun no se agrega
+            $table->boolean('subscription_enabled')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_platforms');
+        Schema::dropIfExists('payment_platform');
     }
 };

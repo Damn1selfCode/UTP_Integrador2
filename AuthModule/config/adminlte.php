@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AcademyController;
 
 return [
 
@@ -14,7 +15,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'LearnStream',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -296,11 +297,11 @@ return [
         ],
 
         // Sidebar items:
-
-
+     
+       
         [
             'text' => 'profile',
-            'url'  => 'usuarios',
+            'url'  => '/usuarios',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -308,18 +309,13 @@ return [
             'url'  => '',
             'icon' => 'fas fa-fw fa-lock',
         ],
-
+//modificar
         [
-            'text'    => 'Academia',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-
-            ],
+            'text' => 'Academia',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [],
         ],
+        
         [
             'text'    => 'Mi red',
             'icon'    => 'fas fa-fw fa-share',
@@ -328,7 +324,7 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ],
-
+        
             ],
         ],
         [
@@ -339,12 +335,13 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ],
-
+        
             ],
         ],
+        //modificar
         [
             'text' => 'Plan de Compensación',
-            'url'  => 'admin/settings',
+            'url'  => '/plan',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

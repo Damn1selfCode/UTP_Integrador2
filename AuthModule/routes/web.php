@@ -1,65 +1,44 @@
 <?php
 
-use App\Http\Controllers\InicioControlador;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AcademyController;
+use Illuminate\Support\Facades\Auth;
 
-// Route::get('/', function () {
-
-//     return view('welcome');
-// });
-Route::get('/', [App\Http\Controllers\InicioControlador::class, 'index']);
-
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home')
-    ->middleware('verified');
-
-Route::get('/usuarios', function () {
-    $plans = app(InicioControlador::class)->planes();
-    $user = auth()->user(); // Obtener el usuario autenticado
-    return view('usuarios', compact('user', 'plans'));
-})->middleware('verified');
-
-//RUTAS ACTUALIZACION
+// Rutas de perfil
 Route::get('profile', 'App\Http\Controllers\ProfileController@edit')->name('profile.edit');
 Route::put('profile', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
-
 Route::delete('/profile/deactivate/{user}', 'App\Http\Controllers\ProfileController@deactivate')->name('profile.deactivate');
 
-Route::post('/suscription/suscribirse', 'App\Http\Controllers\SubscriptionController@suscribirse')->name('suscription.suscribirse');
+
+//home
+Route::get('/home', [AcademyController::class, 'mostrarAcademia'])->name('home');
 
 
-Route::get('/planes', [InicioControlador::class, 'planes']);
+//ruta categroias
+
+Route::get('/academy/{ruta_categoria}', [AcademyController::class, 'mostrarCategorias'])
+    ->middleware(['verified'])
+    ->name('academy');
+
+//plan
+Route::get('/plan', function () {
+    return view('plan');
+});
 
 
+// Ruta de usuarios (esta ruta es la que tgenia para usuarios reemplazala por lo tuyo)
 Route::get('/usuarios', function () {
-    $plans = app(InicioControlador::class)->planes();
     $user = auth()->user(); // Obtener el usuario autenticado
-    return view('usuarios', compact('user', 'plans'));
+    return view('usuarios', compact('user'));
 })->middleware('verified')->name('usuarios');
 
 
-
-Route::get('/usuarios', function () {
-    $plans = app(InicioControlador::class)->planes();
-    $user = auth()->user(); // Obtener el usuario autenticado
-    return view('usuarios', compact('user', 'plans'));
-})->middleware('verified')->name('usuarios');
-
-// Route::prefix('subscribe')
-//     ->name('subscribe.')
-//     ->group(function () {
-//         Route::get('/', 'App\Http\Controllers\SubscriptionController@show')
-//             ->name('show');
-
-//         Route::post('/', 'App\Http\Controllers\SubscriptionController@store')
-//             ->name('store');
-//         Route::post('/approval', 'App\Http\Controllers\SubscriptionController@approval')
-//             ->name('approval');
-//         Route::post('/cancelled', 'App\Http\Controllers\SubscriptionController@cancelled')
-//             ->name('cancelled');
-//     });
+// Route::resource('/crud', [CrudController::class]);
+// Route::get('/xxx', [XController::class]); //solo si tienes un metodo para no especificar

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned()-> unique();
             $table->bigInteger('plan_id')->unsigned();
             $table->timestamps();
-
+            
             $table->foreign('user_id')-> references('id')->on('users');
             $table->foreign('plan_id')-> references('id')->on('plans');
         });

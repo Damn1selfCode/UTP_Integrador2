@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-
+  
 <div class="content-wrapper" style="min-height: 1058.31px;">
 
 
@@ -17,11 +17,11 @@
     <div class="container-fluid">
 
       <div class="row">
-
+        
         @include('profile.edit')
         @include('profile.form')
         @include('profile.content')
-
+      
 
      </div>
 
@@ -39,8 +39,9 @@
 @stop
 
 @section('js')
+ <!-- /.content <script src="{{ asset('forrmjs/paises.json') }}"></script>-->
 
 @stop
 @section('scripts')
-<script src="{{ asset('js/usuarios.js') }}"></script>
+  
 @endsection
